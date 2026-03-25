@@ -9,22 +9,65 @@ To implement Principal Component Analysis (PCA) to reduce the dimensionality of 
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+1.Load the Data Import the dataset to begin the dimensionality reduction process.
+
+2.Explore the Data Perform an initial analysis to understand data characteristics, distributions, and potential patterns.
+
+3.Preprocess the Data (Feature Scaling) Scale features to ensure consistency, preparing the data for principal component analysis (PCA).
+
+4.Apply PCA for Dimensionality Reduction Use PCA to reduce the dataset’s dimensionality while retaining the most significant features.
+
+5.Analyze Explained Variance Assess the variance explained by each principal component to determine the effectiveness of dimensionality reduction.
+
+6.Visualize Principal Components Create visualizations of the principal components to interpret patterns and clusters in reduced dimensions.
 
 ## Program:
 ```
 /*
 Program to implement Principal Component Analysis (PCA) for dimensionality reduction on the energy data.
-Developed by: 
-RegisterNumber:  
+Developed by: SUBASHRAM T
+RegisterNumber: 212225040430
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data = pd.read_csv('HeightsWeights.csv')
+
+print(data.head())
+print(data.columns)
+
+X = data[['Height(Inches)', 'Weight(Pounds)']] 
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+
+explained_variance = pca.explained_variance_ratio_
+print("Explained Variance Ratio for each Principal Component:", explained_variance)
+print("Total Explained Variance:", sum(explained_variance))
+print("\nName: SUBASHRAM T")
+print("Reg. No: 212225040430")
+
+pca_df = pd.DataFrame(X_pca, columns=['PC1', 'PC2'])
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='PC1', y='PC2', data=pca_df, alpha=0.7)
+plt.xlabel("Principal Component 1")
+plt.ylabel("Principal Component 2")
+plt.title("PCA - Heights and Weights Dataset")
+plt.show()
+
 */
 ```
 
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+<img width="1250" height="172" alt="Screenshot 2026-03-25 143356" src="https://github.com/user-attachments/assets/240efc4d-208f-4738-91c2-d0f2db22495e" />
+<img width="1243" height="70" alt="Screenshot 2026-03-25 143515" src="https://github.com/user-attachments/assets/36c2514a-0ca8-40ea-aa2b-eabe095b06f5" />
+<img width="1232" height="747" alt="Screenshot 2026-03-25 143531" src="https://github.com/user-attachments/assets/a91acdb6-92a4-4f07-804a-24fbf95098cb" />
+
 
 
 ## Result:
